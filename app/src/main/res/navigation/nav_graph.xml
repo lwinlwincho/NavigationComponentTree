@@ -12,11 +12,21 @@
         tools:layout="@layout/fragment_one" >
         <action
             android:id="@+id/action_fragmentOne_to_fragmentTwo"
-            app:destination="@id/fragmentTwo" />
+            app:destination="@id/fragmentTwo"
+            app:popUpTo="@id/fragmentTwo"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/fragmentTwo"
         android:name="com.llc.navigationcomponent.FragmentTwo"
         android:label="fragment_two"
-        tools:layout="@layout/fragment_two" />
+        tools:layout="@layout/fragment_two" >
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
 </navigation>
