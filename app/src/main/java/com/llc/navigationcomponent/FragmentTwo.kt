@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.llc.navigationcomponent.databinding.FragmentTwoBinding
 
@@ -28,6 +29,10 @@ class FragmentTwo : Fragment() {
         binding.tvMobileNo.text = args.mobileNo
         binding.tvEmail.text = args.email
         binding.tvAddress.text = args.address
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigate(R.id.global_action)
+        }
     }
 
     override fun onDestroyView() {

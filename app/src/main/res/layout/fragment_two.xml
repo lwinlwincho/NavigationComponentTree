@@ -50,4 +50,9 @@
         android:textSize="14sp"
         android:textStyle="bold"
         tools:text="Address" />
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back"/>
 </LinearLayout>

@@ -34,6 +34,10 @@ class FragmentOne : Fragment() {
 
             findNavController().navigate(action)
         }
+        binding.btnSkip.setOnClickListener {
+            val action=FragmentOneDirections.actionFragmentOneToFragmentThree()
+            findNavController().navigate(action)
+        }
     }
 
     override fun onDestroyView() {
