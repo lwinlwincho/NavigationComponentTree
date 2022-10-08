@@ -21,13 +21,13 @@ class MainActivity : AppCompatActivity() {
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-     /*   // Retrieve NavController from the NavHostFragment
+       // Retrieve NavController from the NavHostFragment
         val navHostFragment = supportFragmentManager
                 .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
         // Set up the action bar for use with the NavController
-        setupActionBarWithNavController(navController)*/
+        setupActionBarWithNavController(navController)
     }
 
     /**

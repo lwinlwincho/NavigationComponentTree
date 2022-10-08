@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/fragmentOne">
-
+    <!--Top level destination. Action back to destination which launched into this in_game_nav_graph-->
+    <action
+        android:id="@+id/global_action"
+        app:popUpTo="@id/fragmentThree"
+        app:popUpToInclusive="true"/>
     <fragment
         android:id="@+id/fragmentOne"
         android:name="com.llc.navigationcomponent.FragmentOne"
@@ -13,12 +17,13 @@
         <action
             android:id="@+id/action_fragmentOne_to_fragmentTwo"
             app:destination="@id/fragmentTwo"
-            app:popUpTo="@id/fragmentTwo"
-            app:popUpToInclusive="true"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/slide_out"/>
+        <action
+            android:id="@+id/action_fragmentOne_to_fragmentThree"
+            app:destination="@id/fragmentThree" />
     </fragment>
     <fragment
         android:id="@+id/fragmentTwo"
@@ -28,5 +33,18 @@
         <argument
             android:name="name"
             app:argType="string" />
+        <argument android:name="mobile_no"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="address"
+            app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentThree"
+        android:name="com.llc.navigationcomponent.FragmentThree"
+        android:label="fragment_three"
+        tools:layout="@layout/fragment_three" />
 </navigation>

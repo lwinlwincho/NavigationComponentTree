@@ -25,6 +25,9 @@ class FragmentTwo : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.tvName.text = args.name
+        binding.tvMobileNo.text = args.mobileNo
+        binding.tvEmail.text = args.email
+        binding.tvAddress.text = args.address
     }
 
     override fun onDestroyView() {

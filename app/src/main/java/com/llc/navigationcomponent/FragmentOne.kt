@@ -24,9 +24,13 @@ class FragmentOne : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnGo.setOnClickListener {
+        binding.btnNext.setOnClickListener {
             val name=binding.etName.text.toString()
-            val action=FragmentOneDirections.actionFragmentOneToFragmentTwo(name)
+            val mobileNo=binding.etMobileNo.text.toString()
+            val email=binding.etEmail.text.toString()
+            val address=binding.etAddress.text.toString()
+
+            val action=FragmentOneDirections.actionFragmentOneToFragmentTwo(name,mobileNo,email,address)
 
             findNavController().navigate(action)
         }
