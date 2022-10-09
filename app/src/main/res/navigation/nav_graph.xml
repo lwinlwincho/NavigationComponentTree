@@ -8,6 +8,7 @@
    <!-- <action
         android:id="@+id/global_action"
         app:destination="@id/fragmentOne" />-->
+
     <fragment
         android:id="@+id/fragmentOne"
         android:name="com.llc.navigationcomponent.FragmentOne"
@@ -33,10 +34,15 @@
         <argument
             android:name="profile"
             app:argType="com.llc.navigationcomponent.model.ProfileModel" />
+        <action
+            android:id="@+id/action_fragmentTwo_to_nav_test"
+            app:destination="@id/nav_test" />
     </fragment>
     <fragment
         android:id="@+id/fragmentThree"
         android:name="com.llc.navigationcomponent.FragmentThree"
         android:label="fragment_three"
         tools:layout="@layout/fragment_three" />
+
+    <include app:graph="@navigation/nav_test" />
 </navigation>
