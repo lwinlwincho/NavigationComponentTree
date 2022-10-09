@@ -5,11 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.net.toUri
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.SavedStateHandle
-import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import com.llc.navigationcomponent.databinding.FragmentOneBinding
 
@@ -36,26 +35,50 @@ class FragmentOne : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       /* savedStateHandle= findNavController().previousBackStackEntry!!.savedStateHandle
-        savedStateHandle.set(LOGIN_SUCCESSFUL,false)*/
+        /* savedStateHandle= findNavController().previousBackStackEntry!!.savedStateHandle
+         savedStateHandle.set(LOGIN_SUCCESSFUL,false)*/
 
         binding.btnNext.setOnClickListener {
-            val name=binding.etName.text.toString()
-            val mobileNo=binding.etMobileNo.text.toString()
-            val email=binding.etEmail.text.toString()
-            val address=binding.etAddress.text.toString()
 
-            val action=FragmentOneDirections.actionFragmentOneToFragmentTwo(name,mobileNo,email,address)
-            //savedStateHandle.set(LOGIN_SUCCESSFUL, value = true)
+            userViewModel.login(
+                name = binding.etName.text.toString(),
+                mobileNo = binding.etMobileNo.text.toString(),
+                email = binding.etEmail.text.toString(),
+                address = binding.etAddress.text.toString()
+            ) {
+                if (it) {
+                    val action = FragmentOneDirections.actionFragmentOneToFragmentTwo(
+                        binding.etName.text.toString(),
+                        binding.etMobileNo.text.toString(),
+                        binding.etEmail.text.toString(),
+                        binding.etAddress.text.toString()
+                    )
+                    findNavController().navigate(action)
+                } else {
+                    Toast.makeText(requireContext(), "Fields Required!", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
 
-            findNavController().navigate(action)
+        userViewModel.uiEvent.observe(viewLifecycleOwner) {
+            if (it) {
+                val action = FragmentOneDirections.actionFragmentOneToFragmentTwo(
+                    binding.etName.text.toString(),
+                    binding.etMobileNo.text.toString(),
+                    binding.etEmail.text.toString(),
+                    binding.etAddress.text.toString()
+                )
+                findNavController().navigate(action)
+            } else {
+                Toast.makeText(requireContext(), "Fields Required!", Toast.LENGTH_LONG).show()
+            }
         }
         binding.btnSkip.setOnClickListener {
             //You can replace it with using deep link in your nar graph
-           /* val action=FragmentOneDirections.actionFragmentOneToFragmentThree()
-            findNavController().navigate(action)*/
+            /* val action=FragmentOneDirections.actionFragmentOneToFragmentThree()
+             findNavController().navigate(action)*/
 
-            val navigateController=findNavController()
+            val navigateController = findNavController()
             userViewModel.name.observe(viewLifecycleOwner, Observer { name ->
                 if (!name.equals(null)) {
                     navigateController.navigate(R.id.action_fragmentOne_to_fragmentThree)
@@ -67,15 +90,11 @@ class FragmentOne : Fragment() {
             })
 
             //Using Deep link
-           /* val request = NavDeepLinkRequest.Builder
-                .fromUri("android-app://FragmentThree".toUri())
-                .build()
-            findNavController().navigate(request)*/
-
-
+            /* val request = NavDeepLinkRequest.Builder
+                 .fromUri("android-app://FragmentThree".toUri())
+                 .build()
+             findNavController().navigate(request)*/
         }
-
-
     }
 
     override fun onDestroyView() {

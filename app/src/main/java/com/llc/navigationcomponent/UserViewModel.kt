@@ -18,4 +18,24 @@ class UserViewModel : ViewModel() {
     private var _address = MutableLiveData(" ")
     val address: LiveData<String> get() = _address
 
+    private var _uiEvent = MutableLiveData<Boolean>()
+    val uiEvent: LiveData<Boolean> get() = _uiEvent
+
+    fun login(
+        name: String,
+        mobileNo: String,
+        email: String,
+        address: String,
+        listener: (Boolean) -> Unit
+    ) {
+        if (name.isNotBlank() && mobileNo.isNotBlank() && email.isNotBlank() && address.isNotBlank()) {
+            // ToDo Navigate to next page
+            listener.invoke(true)
+            // _uiEvent.postValue(true)
+        } else {
+            // ToDo show field required message
+            listener.invoke(false)
+            // _uiEvent.postValue(false)
+        }
+    }
 }
