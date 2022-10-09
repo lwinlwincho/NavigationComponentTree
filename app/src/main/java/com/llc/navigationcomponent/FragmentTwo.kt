@@ -20,19 +20,19 @@ class FragmentTwo : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-       /* val navController=findNavController()
-        val currentBackStackEntry = navController.currentBackStackEntry!!
-        val savedStateHandle = currentBackStackEntry.savedStateHandle
-        savedStateHandle.getLiveData<Boolean>(FragmentOne.LOGIN_SUCCESSFUL)
-            .observe(currentBackStackEntry, Observer { success ->
-                if (!success) {
-                    val startDestination = navController.graph.startDestinationId
-                    val navOptions = NavOptions.Builder()
-                        .setPopUpTo(startDestination, true)
-                        .build()
-                    navController.navigate(startDestination, null, navOptions)
-                }
-            })*/
+        /* val navController=findNavController()
+         val currentBackStackEntry = navController.currentBackStackEntry!!
+         val savedStateHandle = currentBackStackEntry.savedStateHandle
+         savedStateHandle.getLiveData<Boolean>(FragmentOne.LOGIN_SUCCESSFUL)
+             .observe(currentBackStackEntry, Observer { success ->
+                 if (!success) {
+                     val startDestination = navController.graph.startDestinationId
+                     val navOptions = NavOptions.Builder()
+                         .setPopUpTo(startDestination, true)
+                         .build()
+                     navController.navigate(startDestination, null, navOptions)
+                 }
+             })*/
     }
 
     override fun onCreateView(
@@ -45,10 +45,10 @@ class FragmentTwo : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvName.text = args.name
-        binding.tvMobileNo.text = args.mobileNo
-        binding.tvEmail.text = args.email
-        binding.tvAddress.text = args.address
+        binding.tvName.text = args.profile.name
+        binding.tvMobileNo.text = args.profile.mobileNo
+        binding.tvEmail.text = args.profile.email
+        binding.tvAddress.text = args.profile.address
 
 
 

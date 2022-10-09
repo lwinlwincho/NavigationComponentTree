@@ -29,17 +29,10 @@
         android:name="com.llc.navigationcomponent.FragmentTwo"
         android:label="fragment_two"
         tools:layout="@layout/fragment_two" >
+
         <argument
-            android:name="name"
-            app:argType="string" />
-        <argument android:name="mobile_no"
-            app:argType="string" />
-        <argument
-            android:name="email"
-            app:argType="string" />
-        <argument
-            android:name="address"
-            app:argType="string" />
+            android:name="profile"
+            app:argType="com.llc.navigationcomponent.model.ProfileModel" />
     </fragment>
     <fragment
         android:id="@+id/fragmentThree"

@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.fragment.findNavController
 import com.llc.navigationcomponent.databinding.FragmentOneBinding
+import com.llc.navigationcomponent.model.ProfileModel
 
 class FragmentOne : Fragment() {
 
@@ -47,12 +48,14 @@ class FragmentOne : Fragment() {
                 address = binding.etAddress.text.toString()
             ) {
                 if (it) {
-                    val action = FragmentOneDirections.actionFragmentOneToFragmentTwo(
-                        binding.etName.text.toString(),
-                        binding.etMobileNo.text.toString(),
-                        binding.etEmail.text.toString(),
-                        binding.etAddress.text.toString()
+                    val profileModel = ProfileModel(
+                        name = binding.etName.text.toString(),
+                        mobileNo = binding.etMobileNo.text.toString(),
+                        email = binding.etEmail.text.toString(),
+                        address = binding.etAddress.text.toString(),
+                        dob = ""
                     )
+                    val action = FragmentOneDirections.actionFragmentOneToFragmentTwo(profileModel)
                     findNavController().navigate(action)
                 } else {
                     Toast.makeText(requireContext(), "Fields Required!", Toast.LENGTH_LONG).show()
@@ -62,12 +65,15 @@ class FragmentOne : Fragment() {
 
         userViewModel.uiEvent.observe(viewLifecycleOwner) {
             if (it) {
-                val action = FragmentOneDirections.actionFragmentOneToFragmentTwo(
-                    binding.etName.text.toString(),
-                    binding.etMobileNo.text.toString(),
-                    binding.etEmail.text.toString(),
-                    binding.etAddress.text.toString()
+                val profileModel = ProfileModel(
+                    name = binding.etName.text.toString(),
+                    mobileNo = binding.etMobileNo.text.toString(),
+                    email = binding.etEmail.text.toString(),
+                    address = binding.etAddress.text.toString(),
+                    dob = ""
                 )
+
+                val action = FragmentOneDirections.actionFragmentOneToFragmentTwo(profileModel)
                 findNavController().navigate(action)
             } else {
                 Toast.makeText(requireContext(), "Fields Required!", Toast.LENGTH_LONG).show()
