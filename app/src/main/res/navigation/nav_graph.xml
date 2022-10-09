@@ -5,9 +5,9 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/fragmentOne">
     <!--Top level destination. Action back to destination which launched into this in_game_nav_graph-->
-    <action
+   <!-- <action
         android:id="@+id/global_action"
-        app:destination="@id/fragmentOne" />
+        app:destination="@id/fragmentOne" />-->
     <fragment
         android:id="@+id/fragmentOne"
         android:name="com.llc.navigationcomponent.FragmentOne"

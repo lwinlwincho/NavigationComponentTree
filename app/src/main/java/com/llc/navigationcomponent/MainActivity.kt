@@ -1,8 +1,10 @@
 package com.llc.navigationcomponent
 
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
+import androidx.navigation.NavDeepLinkBuilder
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.llc.navigationcomponent.databinding.ActivityMainBinding
@@ -28,6 +30,11 @@ class MainActivity : AppCompatActivity() {
 
         // Set up the action bar for use with the NavController
         setupActionBarWithNavController(navController)
+
+       /* if (!navController.popBackStack()) {
+            // Call finish() on your Activity
+            finish()
+        }*/
     }
 
     /**
